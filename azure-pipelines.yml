@@ -22,3 +22,4 @@ steps:
     appType: 'webAppLinux'
     appName: 'webCalculator-app'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'zipDeploy'
