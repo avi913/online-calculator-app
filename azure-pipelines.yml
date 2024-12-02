@@ -8,7 +8,7 @@ steps:
     publishWebProjects: true
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'az-pipeline'
+    azureSubscription: 'new-connection'
     appType: 'webAppLinux'
     appName: 'webCalculator-app'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
