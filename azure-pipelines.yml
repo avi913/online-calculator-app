@@ -7,9 +7,10 @@ steps:
   inputs:
     packageType: 'sdk'
     version: '5.0.x' # Replace with your SDK version
-- task: NuGetToolInstaller@1
+- task: NuGetCommand@2
   inputs:
-    versionSpec: '>=5.8.0'
+    command: 'restore'
+    restoreSolution: '**/*.sln'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
