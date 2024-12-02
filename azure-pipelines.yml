@@ -1,14 +1,22 @@
 variables:
   buildConfiguration: 'Release'
 
+pool:
+  name: 'agent-pool' # Replace with your self-hosted agent pool name
+
 steps:
 - task: DotNetCoreCLI@2
+  displayName: 'Publish .NET Core Project'
   inputs:
     command: 'publish'
     publishWebProjects: true
+    arguments: '--configuration $(buildConfiguration)'
+    zipAfterPublish: true
+
 - task: AzureWebApp@1
+  displayName: 'Deploy to Azure Web App'
   inputs:
-    azureSubscription: 'new-connection'
+    azureSubscription: 'new-connection' # Replace with your Azure service connection name
     appType: 'webAppLinux'
-    appName: 'webCalculator-app'
+    appName: 'webCalculator-app' # Replace with your app's name
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
