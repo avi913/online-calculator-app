@@ -3,10 +3,18 @@ variables:
 pool:
   name: agent-pool
 steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '5.0.x' # Replace with your SDK version
+- task: NuGetToolInstaller@1
+  inputs:
+    versionSpec: '>=5.8.0'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
     publishWebProjects: true
+    arguments: '--framework net5.0' # Replace with your framework version
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'new-connection'
