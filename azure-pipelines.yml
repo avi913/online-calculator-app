@@ -21,6 +21,9 @@ steps:
   inputs:
     azureSubscription: 'new-connection'
     appType: 'webApp'
-    appName: 'webCalculator-app'
+    appName: 'web-app-service'
+    deployToSlotOrASE: true
+    resourceGroupName: 'app-services'
+    slotName: 'production'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
     deploymentMethod: 'auto'
