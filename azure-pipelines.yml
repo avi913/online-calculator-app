@@ -16,10 +16,11 @@ steps:
     command: 'publish'
     publishWebProjects: true
     arguments: '--framework net5.0' # Replace with your framework version
+
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'new-connection'
-    appType: 'webAppLinux'
+    appType: 'webApp'
     appName: 'webCalculator-app'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    deploymentMethod: 'zipDeploy'
+    deploymentMethod: 'auto'
